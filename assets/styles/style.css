@@ -1,0 +1,14 @@
+/* Put your CSS here */
+html, body {
+    margin: 20px;
+}
+.full{
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  border:1px solid #898989;
+  background:#aaafff;
+  z-index:-1;
+}
