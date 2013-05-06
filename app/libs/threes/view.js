@@ -144,18 +144,19 @@ var $container = this.$();
     // var theta = 12;
 
     // console.log(this.get('leftClic'),this.get('rightClic'))
-    if (this.get('leftClic')===true)
-      this.get('camera').position.y = 1400 * Math.cos( THREE.Math.degToRad( theta ) );
-    else
-      this.get('camera').position.z = 1400 * Math.cos( THREE.Math.degToRad( theta ) );
-    if (this.get('isCtrlDown')===true){
-      console.log('ctrl')
-      this.get('camera').position.x = 1400 * Math.sin( THREE.Math.degToRad( theta ) );
-    }else{
-      this.get('camera').position.x = Math.PI * Math.sin( THREE.Math.degToRad( theta ) );
+    if (this.get('leftClic')===true || this.get('rightClic')===true){
+      if (this.get('leftClic')===true){
+        this.get('camera').position.z = 1400 * Math.cos( THREE.Math.degToRad( theta ) );
+        this.get('camera').position.x = 1400 * Math.sin( THREE.Math.degToRad( theta ) );
+      }else{
+        this.get('camera').position.y = 1400 * Math.cos( THREE.Math.degToRad( theta ) );
+        this.get('camera').position.z = 1400 * Math.sin( THREE.Math.degToRad( theta ) );
+      }
+
+
+      var scene = this.get('scene');
+      this.get('camera').lookAt( scene.position );
     }
-    var scene = this.get('scene');
-    this.get('camera').lookAt( scene.position );
     // console.log(theta);
   },
   mouseDown:function(){
